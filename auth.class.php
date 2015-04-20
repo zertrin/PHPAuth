@@ -327,11 +327,10 @@ class Auth
 
 		if($remember == true) {
 			$data['expire'] = date("Y-m-d H:i:s", strtotime($this->config->cookie_remember));
-			$data['expiretime'] = strtotime($data['expire']);
 		} else {
-			$data['expire'] = date("Y-m-d H:i:s", strtotime($this->config->cookie_remember));
-			$data['expiretime'] = 0;
+			$data['expire'] = date("Y-m-d H:i:s", strtotime($this->config->cookie_forget));
 		}
+		$data['expiretime'] = strtotime($data['expire']);
 
 		$data['cookie_crc'] = sha1($data['hash'] . $this->config->site_key);
 
